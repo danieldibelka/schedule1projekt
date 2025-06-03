@@ -1,0 +1,385 @@
+/* Instagram Reels User Design - style.css - ULTRA DYNAMIC EDITION */
+
+/* --- Základní a Globální Styly --- */
+:root {
+    --primary-color: #FF00FF; /* Jasná neonová růžová */
+    --secondary-color: #00FFFF; /* Jasná neonová tyrkysová */
+    --accent-color: #FFFF00; /* Jasná neonová žlutá */
+    --background-dark: #0A0A0A; /* Téměř černá */
+    --background-light: #1A1A1A; /* Tmavší šedá */
+    --text-light: #F0F0F0;
+    --border-flash: rgba(255, 255, 255, 0.3); /* Pro blikající okraje */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive; /* Pixely styl nebo jiný výrazný font */
+    /* Můžete použít i 'Orbitron', sans-serif; nebo 'VT323', monospace; */
+    line-height: 1.2;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewport="0 0 100 100" style="font-size:24px;"><text y="50%" x="50%" text-anchor="middle" dominant-baseline="central" fill="%23FF00FF">⚡</text></svg>') 16 16, auto; /* Blikající kurzor */
+}
+
+/* Import Google Font (pokud chcete použít Press Start 2P) */
+/* <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> */
+
+
+/* --- Klíčové Animace --- */
+
+/* Blikání */
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+/* Chyvění / Chvění */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+}
+
+/* Vyrůstání a skákání */
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Neustálé jemné pulzování */
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.005); }
+}
+
+/* Gradientový pohyb */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+/* --- Hlavička --- */
+header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 200% 100%;
+    animation: gradientShift 5s infinite linear alternate; /* Neustálý pohyb gradientu */
+    color: #000; /* Černý text na neonovém pozadí */
+    padding: 2.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-color); /* Výrazný okraj */
+    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color); /* Neonová záře */
+    animation: pulse 1s infinite alternate, gradientShift 5s infinite linear alternate; /* Dvě animace najednou */
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7); /* Výraznější stín textu */
+    margin-bottom: 0.8rem;
+    animation: shake 0.5s infinite; /* Hlavička se neustále chvěje */
+}
+
+/* --- Navigace --- */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Pro responzivitu */
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background-color: #1A1A1A; /* Tmavé pozadí */
+    border-bottom: 2px dashed var(--accent-color); /* Přerušovaná linka */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+nav a {
+    color: var(--accent-color); /* Text v neonové žluté */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border: 3px solid var(--primary-color); /* Výrazné okraje */
+    border-radius: 5px;
+    background-color: rgba(255, 0, 255, 0.1); /* Lehce průhledné pozadí */
+    transition: all 0.08s ease-in-out; /* Super rychlé přechody */
+    animation: flash 1.5s infinite step-end; /* Blikání odkazů */
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color); /* Změna na tyrkysovou při najetí */
+    color: #000; /* Černý text */
+    transform: scale(1.05) rotate(2deg); /* Zvětší se a pootočí */
+    box-shadow: 0 0 15px var(--accent-color), 0 0 25px var(--secondary-color); /* Neonová záře */
+    animation: none; /* Zastaví blikání při najetí */
+}
+
+nav a:active {
+    transform: scale(0.95); /* Zmenší se při kliknutí */
+    box-shadow: none;
+    background-color: var(--primary-color);
+}
+
+/* --- Hlavní obsah --- */
+main {
+    flex-grow: 1;
+    padding: 2.5rem;
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    background-color: var(--background-light);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Tmavý stín */
+    border: 3px dashed var(--secondary-color); /* Přerušovaný okraj */
+    animation: bounceIn 0.5s ease-out forwards; /* Vybublání obsahu při načtení */
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Tyrkysová záře */
+    border: 2px solid var(--primary-color);
+    position: relative; /* Pro pseudo-prvky */
+    animation: subtlePulse 3s infinite alternate; /* Jemné pulzování sekcí */
+}
+
+h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    border-bottom: 4px double var(--accent-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 0px #000;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+ul li {
+    background-color: rgba(255, 0, 255, 0.1); /* Lehce průhledné pozadí */
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--secondary-color); /* Výrazná barevná linka */
+    transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.1s ease;
+    animation: shake 0.2s infinite alternate; /* Položky seznamu se neustále chvějí */
+}
+
+ul li:hover {
+    transform: translateX(10px) scale(1.02); /* Větší posunutí a zvětšení */
+    background-color: rgba(0, 255, 255, 0.2); /* Změna barvy při najetí */
+    box-shadow: 0 0 10px var(--accent-color); /* Neonová záře */
+    animation: none; /* Zastaví chvění při najetí */
+}
+
+ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 0px #000;
+}
+
+ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Tabulky --- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Tyrkysová záře tabulky */
+    border: 2px solid var(--primary-color);
+}
+
+table thead tr {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #000; /* Černý text hlavičky */
+    font-size: 1.2rem;
+}
+
+table th, table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-flash); /* Blikající okraje */
+    border-right: 1px solid var(--border-flash);
+}
+
+table th:last-child, table td:last-child {
+    border-right: none;
+}
+
+table tbody tr {
+    background-color: var(--background-dark);
+    transition: background-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    animation: subtlePulse 2s infinite alternate; /* Jemné pulzování řádků */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #111;
+}
+
+table tbody tr:hover {
+    background-color: var(--background-light);
+    transform: scale(1.01) translateX(5px); /* Jemné zvětšení a posunutí */
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--primary-color); /* Dvojitá neonová záře */
+    animation: none; /* Zastaví pulzování při najetí */
+}
+
+/* --- Formuláře --- */
+form {
+    background-color: var(--background-dark);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Růžová záře */
+    border: 2px solid var(--secondary-color);
+    position: relative;
+    animation: subtlePulse 2.5s infinite alternate; /* Pulzování formuláře */
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--accent-color); /* Žluté popisky */
+    font-size: 1.2rem;
+    animation: flash 1s infinite alternate; /* Blikání popisků */
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: rgba(255, 0, 255, 0.05); /* Průhledné pozadí */
+    color: var(--text-light);
+    font-size: 1.1rem;
+    transition: border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 5px rgba(0, 255, 255, 0.5), 0 0 15px var(--accent-color); /* Dvojitá záře při focusu */
+    outline: none;
+    animation: shake 0.1s infinite; /* Pole se chvějí při focusu */
+}
+
+form input[type="submit"] {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 100%;
+    animation: gradientShift 2s infinite linear, pulse 0.5s infinite alternate; /* Rychlý gradient a pulzování */
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 30px;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewport="0 0 100 100" style="font-size:24px;"><text y="50%" x="50%" text-anchor="middle" dominant-baseline="central" fill="%23FFFF00">✨</text></svg>') 16 16, pointer; /* Blikající kurzor při najetí */
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+    transition: all 0.05s ease-out; /* Extrémně rychlý přechod */
+}
+
+form input[type="submit"]:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-5px) scale(1.05) rotate(-1deg); /* Výrazné vyskočení a pootočení */
+    box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--primary-color);
+    animation: none; /* Zastaví pulzování při najetí */
+}
+
+form input[type="submit"]:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: none;
+}
+
+
+/* --- Patička --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    font-size: 1rem;
+    border-top: 3px dashed var(--accent-color);
+    box-shadow: 0 -5px 15px rgba(0, 255, 255, 0.4);
+    animation: subtlePulse 4s infinite alternate; /* Jemné pulzování patičky */
+}
+
+/* --- Responzivní design (pro mobily) --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    nav {
+        gap: 0.5rem;
+        padding: 1rem 0;
+    }
+
+    nav a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+
+    main {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p, ul li, table th, table td, form label, form input {
+        font-size: 0.9rem;
+    }
+
+    form input[type="submit"] {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
